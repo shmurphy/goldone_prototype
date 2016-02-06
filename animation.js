@@ -23,6 +23,9 @@ Animation.prototype.drawFrame = function (tick, ctx, x, y) {
     else if (this.entityType === 'bird_enemy') {
         this.drawFrameBirdEnemy(tick, ctx, x, y);
     }
+    else if (this.entityType === 'dragon') {
+        this.drawFrameDragon(tick, ctx, x, y);
+    }
 }
 
 Animation.prototype.drawFramePlayerOne = function(tick, ctx, x, y) {
@@ -100,6 +103,33 @@ Animation.prototype.drawFrameBirdEnemy = function(tick, ctx, x, y) {
         x, y,
         this.frameWidth * width_mult,
         this.frameHeight * height_mult);
+}
+
+Animation.prototype.drawFrameDragon = function(tick, ctx, x, y) {
+    this.elapsedTime += tick;
+    this.time += tick
+    if(this.isDone()) {
+        if (this.loop) this.elapsedTime = 0;
+    }
+
+    var frame = this.currentFrame();
+    var xindex = frame % 3;
+    var yindex = 0;
+    var xframe = 0;
+    var yframe = 0;
+    if (this.type === "idle") {
+        xframe = xindex * this.frameWidth;
+        yframe = 0;
+    }
+    var width_mult = 1.5;
+    var height_mult = 1.5;
+    ctx.drawImage(this.spriteSheet,
+        xframe, yframe,  // source from sheet
+        this.frameWidth, this.frameHeight,
+        x, y,
+        this.frameWidth * width_mult,
+        this.frameHeight * height_mult);
+
 }
 
 Animation.prototype.currentFrame = function () {

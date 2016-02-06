@@ -18,6 +18,7 @@ AM.queueDownload("./img/area51main.png");
 AM.queueDownload("./img/bird_enemy_spritesheet.png");
 AM.queueDownload("./img/cement_background.jpg");
 AM.queueDownload("./img/textures.png");
+AM.queueDownload("./img/dragon.png");
 
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
@@ -65,7 +66,7 @@ AM.downloadAll(function () {
     "XXXXXXXXXXXXXX     X B                XXXXXXXXXXXXXXXXXXXXXXXXX",
     "XXXXXXXXXXXXXX     X                  XXXXXXXXXXXXXXXXXXXXXXXXX",
     "XXXXXXXXXXXXXX     X                  XXXXXXXXXXXXXXXXXXXXXXXXX",
-    "XXXXXXXXXXXXXX     X     B            XXXXXXXXXXXXXXXXXXXXXXXXX",
+    "XXXXXXXXXXXXXX  D  X     B            XXXXXXXXXXXXXXXXXXXXXXXXX",
     "XXXXXXXXXXXXXX     X                  XXXXXXXXXXXXXXXXXXXXXXXXX",
     "XXXXXXXXXXXXXX     X                                         XX",
     "XXXXXXXXXXXXXX     X                                         XX",
@@ -78,12 +79,12 @@ AM.downloadAll(function () {
     "X                    TTTTTTXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "X                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "X                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
-    "X                TTTTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
+    "X       D        TTTTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "X                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "X                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "XTTTTTTTTTTTTTTTTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
+    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   D   XX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XX",
@@ -92,7 +93,7 @@ AM.downloadAll(function () {
     "XX                                                           XX",
     "XX B         TT           TT B          TT    B              XX",
     "XX           XX           XX            XX                   XX",
-    "XX           XX           XX            XX                   XX",
+    "XX           XX      D    XX            XX            D      XX",
     "XX           XX           XX            XX                   XX",
     "XXTTTTTTTTTTTXXTTTTTTTTTTTXXTTTTTTTTTTTTXXTTTTTTTTTTTTTTTTTTTXX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -107,7 +108,7 @@ AM.downloadAll(function () {
       for (var j = 0; j < currLevel.grid.length; j++) {
         ch = currLevel.grid[j][i];
         if (ch === "player") {
-          var player = new PlayerOne(gameEngine, i * 50, j * 50 - 125, AM.getAsset("./img/area51main.png"))
+          var player = new PlayerOne(gameEngine, i * 50, j * 50 - 125, AM.getAsset("./img/area51main.png"));
           gameEngine.addEntity(player);
           gameEngine.camera.follow(player, 100, 100);
         } else if (ch === "bird") {
@@ -122,6 +123,8 @@ AM.downloadAll(function () {
           gameEngine.platforms.push((new Platform(AM.getAsset("./img/textures.png"), gameEngine, i * 50, j * 50, 50, 50 * mult, "X")));
         } else if (ch === "platformtop") {
           gameEngine.platforms.push((new Platform(AM.getAsset("./img/textures.png"), gameEngine, i*50, j*50, 50, 50, "T")));
+        } else if (ch === "dragon") {
+            gameEngine.addEntity(new Dragon(gameEngine, i * 50, j * 50, AM.getAsset("./img/dragon.png")));
         }
       }
     }
