@@ -93,7 +93,7 @@ AM.downloadAll(function () {
     "XX                                                           XX",
     "XX B         TT           TT B          TT    B              XX",
     "XX           XX           XX            XX                   XX",
-    "XX           XX      D    XX            XX            D      XX",
+    "XX           XX      D    XX            XX                   XX",
     "XX           XX           XX            XX                   XX",
     "XXTTTTTTTTTTTXXTTTTTTTTTTTXXTTTTTTTTTTTTXXTTTTTTTTTTTTTTTTTTTXX",
     "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
